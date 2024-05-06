@@ -1,0 +1,11 @@
+To launch the an NRP-core simulation of the task using a previously-learned policy:
+NRPCoreSim -c simulation_config.json 
+ 
+ 
+ 
+ Set the parameter self.algo manually inside the PYthon engine to use either PPO or DDPG
+ self.algo = 1 for PPO
+ self.algo = 2 for DDPG
+
+
+

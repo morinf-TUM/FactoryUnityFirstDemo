@@ -1,0 +1,45 @@
+{
+	"SimulationName": "factory1b",
+	"SimDescription": "Launches an NRP simulation comprising a Unity engine and a Pytorch Python JSON engine for control policy; the latter guides drones performing a landing task inside a factory scene in Unity",
+	"SimulationTimeout": 100,
+
+	
+	"EngineConfigs": [
+		{
+			"EngineType": "python_json",
+			"EngineName": "policy",
+			"PythonFileName": "policy_python_json_engine.py"
+		},
+		{
+			"EngineType": "unity_grpc_engine",
+			"EngineName": "unity",
+			"EngineTimestep": 0.2,
+			"EngineProcCmd": "../nrp/bin/factoryDemo.x86_64",
+			"EngineProcStartParams": ["--port 50060 --num_agents 20 --mode 2"],
+			"ServerAddress": "localhost:50060",
+			"ProtobufPackages": ["NrpGenericProto"]
+		}
+	],
+
+
+	"DataPackProcessingFunctions": [
+		{
+			"Name": "actions_to_unity",
+			"FileName": "actions_to_unity_tf.py"
+		},
+		{
+			"Name": "actions_to_core",
+			"FileName": "actions_to_core_tf.py"
+		},
+		{
+			"Name": "observations_to_core",
+			"FileName": "observations_to_core_tf.py"
+		},
+		{
+			"Name": "observations_to_policy",
+			"FileName": "observations_to_policy_tf.py"
+		}
+	]
+}
+
+
